@@ -25,7 +25,6 @@ type Listeners<Type> = {
   ) => void;
 } & {
   [Property in keyof Type as `on${Capitalize<string & Property>}Delete`]?: (
-    newValue: Type[Property]
   ) => void;
 };
 
@@ -43,4 +42,5 @@ type DogInfoListeners = Listeners<DogInfo>;
 listenToObject(lg, {
   onNameChange: (v: string) => {},
   onAgeChange: (v: number) => {},
+  onAgeDelete: () => {}
 });
